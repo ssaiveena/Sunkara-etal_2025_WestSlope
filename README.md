@@ -1,14 +1,14 @@
 [![DOI](https://zenodo.org/badge/265254045.svg)](https://zenodo.org/doi/10.5281/zenodo.10442485)
 
 
-# Gold-etal_2024_EarthsFuture
+# Sunkara-etal_2025_WestSlope
 
-**Exploring the Spatially Compounding Multi-sectoral Drought Vulnerabilities in Colorado's West Slope River Basins**
+**Clarifying How the Drivers of Future Water Shortages Change across Regional to User-level Scales in Colorado’s West Slope River Basins**
 
-David F. Gold<sup>1\*</sup>, Patrick M. Reed <sup>2</sup> and Rohini S. Gupta <sup>2</sup>
+Sai Veena, Sunkara <sup>1\*</sup>, David F. Gold<sup>2</sup>, and Patrick M. Reed <sup>1</sup>
 
-<sup>1 </sup> Department of Physical Geography, Faculty of Geosciences, Utrecht University, Utrecht, Netherlands
-<sup>2 </sup> School of Civil and Environmental Engineering, Cornell University, Ithaca, NY
+<sup>2 </sup> Department of Physical Geography, Faculty of Geosciences, Utrecht University, Utrecht, Netherlands
+<sup>1 </sup> School of Civil and Environmental Engineering, Cornell University, Ithaca, NY
 
 \* corresponding author:  d.f.gold@uu.nl
 
