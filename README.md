@@ -7,17 +7,19 @@
 
 Sai Veena, Sunkara <sup>1\*</sup>, David F. Gold<sup>2</sup>, and Patrick M. Reed <sup>1</sup>
 
-<sup>2 </sup> Department of Physical Geography, Faculty of Geosciences, Utrecht University, Utrecht, Netherlands
 <sup>1 </sup> School of Civil and Environmental Engineering, Cornell University, Ithaca, NY
+<sup>2 </sup> Department of Physical Geography, Faculty of Geosciences, Utrecht University, Utrecht, Netherlands
 
-\* corresponding author:  d.f.gold@uu.nl
+\* corresponding author:  ss4285@cornell.edu
 
 ## Abstract
-The state of Colorado’s West Slope Basins are critical headwaters of the Colorado River and play a vital role in supporting Colorado’s local economy and natural environment. However, balancing the multi-sectoral water demands in the West Slope Basins is an increasing challenge for water managers. Internal variability - irreducible uncertainty stemming from interactions across non-linear processes within the hydroclimate system - complicates future vulnerability assessments. Climate change may exacerbate drought vulnerability in the West Slope Basins, with significant streamflow declines possible by mid-century. In this work, we introduce a novel multi-site Hidden Markov Model (HMM)-based synthetic streamflow generator to create an ensemble of streamflows for all six West Slope Basins that better characterizes the region’s hydroclimate and drought extremes. We capture the effects of climate change by perturbing the HMM to generate a climate-adjusted ensemble of streamflows that reflects plausible changes in climate. We then route both ensembles of streamflows through StateMod, the state of Colorado’s water allocation model, to evaluate spatially compounding drought impacts across the West Slope basins. Our results illustrate how drought events emerging from the system’s stationary internal variability in the absence of climate change can have significant impacts that exceed extreme conditions in the historical record. Further, we find that even relatively modest levels of plausible climate changes can cause a regime shift where extreme drought impacts become routine. These results can inform future Colorado River planning efforts, and our methodology can be expanded to other snow-dominated regions that face persistent droughts.
+Colorado’s West Slope Basins are a critical source of water for the Colorado River, contributing approximately 70% of the inflows to Lake Powell in a typical year. Whether these basins will face intensifying water shortages by mid-century remains highly debated due to deep uncertainties in future climate conditions, including the possibility of wet
+ter or drier futures, persistence of severe drought, population growth, and evolving multisectoral water demands. Identifying the primary drivers of plausible mid-century water shortages is particularly challenging given the region’s high internal climate variabil ity, changing hydrology, and complex institutional framework governing water rights for thousands of users. This study integrates large-scale exploratory modeling with diagnostic sensitivity analysis to clarify the relative influence of uncertain natural and human drivers of water shortages in the West Slope basins. A multi-site Hidden Markov Model (HMM) is used to generate a wide range of synthetic streamflow scenarios representing
+plausible mid-century changes relative to the historical baseline. These stochastic hydrologic scenarios span both wetter and drier futures and are combined with projected demand changes across sectors. The resulting scenarios are simulated within Colorado’s StateMod water allocation model to estimate water shortages at basin, district, and sectoral scales. Diagnostic sensitivity analysis reveals that the dominant drivers of shortages vary markedly by basin, district, major reservoir and sector. These findings provide actionable, scale-specific insights into the most influential factors shaping future water stress in Colorado’s West Slope basins.
 
 
 ## Journal reference
-Gold, D.F, Reed, P.M. & Gupta, R.S. (In Revision).Exploring the Spatially Compounding Multi-sectoral Drought Vulnerabilities in Colorado's West Slope River Basins. Earth's Future
+Sunkara, S.V., Reed, P., and Gold, D. Unraveling the Drivers of Water Shortage across Spatial Scales and Sectors in Colorado’s West Slope River Basins. Earth's Future
 ## Code reference
 Gold, D., Gupta, R., & Reed, P. (2024). Exploring the Spatially Compounding Multi-sectoral Drought Vulnerabilities in Colorado's West Slope River Basins (v1.0). Zenodo. https://doi.org/10.5281/zenodo.13827786
 
@@ -36,13 +38,13 @@ Colorado Decision Support Systems: [https://cdss.colorado.gov/modeling-data/surf
 | StateMod | 15.0 | [https://github.com/OpenCDSS/cdss-app-statemod-fortran](https://github.com/OpenCDSS/cdss-app-statemod-fortran) | - |
 
 ## Reproduce my experiment
-This experiment has three main phases. First, the multi-site HMM is fit to the historical record of streamflows in the West Slope Basins. This can be done locally on a laptop or desktop. Second, the streamflow ensembles are run through StateMod, and output is collected and compressed. This step must be done on an HPC resource. This experiment was conducted on [The Cube](https://www.cac.cornell.edu/wiki/index.php?title=THECUBE_Cluster) and [Hopper](https://www.cac.cornell.edu/wiki/index.php?title=Hopper_Cluster) clusters at Cornell University. Finally, the StateMod output is post-processed, and figures are generated. This step can be done on a laptop, but is recommended to be completed on a HPC resource. 
+This experiment has three main phases. First, the multi-site HMM is fit to the historical record of streamflows in the West Slope Basins. This can be done locally on a laptop or desktop. Second, the streamflow ensembles are run through StateMod, and output is collected and compressed. This step must be done on an HPC resource. This experiment was conducted on [Hopper](https://www.cac.cornell.edu/wiki/index.php?title=Hopper_Cluster) clusters at Cornell University. Finally, the StateMod output is post-processed, and figures are generated. This step can be done on a laptop, but is recommended to be completed on a HPC resource. 
 
-### 1. Fit the multi-site HMM and generate synthetic streamflow ensembles
+### 1. Fit the multi-site HMM and generate synthetic streamflow ensembles for hydroclimatic projections
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `fit_hmm.py` | Fits the HMM to 75 years of historical record and saves parameters to text files| `python3 fit_hmm.py` |
-| `create_synthetic_records.py` | uses the HMM parameters to generate a baseline ensemble of annual streamflow records for each basin | `python3 create_synthetic_records.py` |
+| `Step0_fit_hmm.py` | Fits the HMM to 75 years of historical record and saves parameters to text files| `python3 fit_hmm.py` |
+| `Step1_sample_parameters.sh` | uses the HMM parameters to generate a baseline ensemble of annual streamflow records for each basin | `python3 create_synthetic_records.py` |
 | `annual_records_to_xbm.py` | disaggregates baseline synthetic records across space and time and creates StateMod input files (xbm) | `python3 annual_records_to_xbm.py` |
 | `create_synthetic_records_climate.py` | applies climate change adjustements the HMM parameters and generates an adjusted ensemble of annual streamflow records for each basin | `python3 create_synthetic_records_climate.py` |
 | `annual_records_to_xbm_climate.py` | disaggregates climate adjusted synthetic records across space and time and creates StateMod input files (xbm) | `python3 annual_records_to_xbm_climate.py` |
