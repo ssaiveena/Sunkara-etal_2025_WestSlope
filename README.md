@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/481033714.svg)](https://doi.org/10.5281/zenodo.21294774)
+[![DOI](https://zenodo.org/badge/1046452131.svg)](https://doi.org/10.5281/zenodo.21294774)
 
 
 # Sunkara-etal_2025_WestSlope
